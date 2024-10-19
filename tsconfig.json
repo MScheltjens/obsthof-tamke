@@ -19,9 +19,10 @@
     ],
     "paths": {
       "@components/*": ["./components/*"],
-      "@config/*": ["./config/*"],
-      "@middlewares/*": ["./middlewares/*"],
-      "@lib/*": ["./lib/*"]
+      "@auth/*": ["./auth/*"],
+      "@i18n/*": ["./i18n/*"],
+      "@lib/*": ["./lib/*"],
+      "@messages/*": ["./messages/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

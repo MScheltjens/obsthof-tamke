@@ -1,17 +1,17 @@
-import { authOptions } from '@config/authentication';
+import { getAuth } from '@auth/auth-config';
 import { AuthButton } from '@components/auth-button';
-
-import { getServerSession } from 'next-auth';
+import { redirect } from '@i18n/routing';
 
 export default async function Page() {
-  const session = await getServerSession(authOptions);
+  const session = await getAuth();
   const user = session?.user;
 
-  return (
+  return user ? (
     <section className="flex h-screen flex-col items-center justify-center">
       <h1 className="text-4xl font-bold">Admin Page</h1>
-      <p className="mt-4 text-lg">Welcome, {user ? user.name : 'guest'}!</p>
       <AuthButton />
     </section>
+  ) : (
+    redirect('/login')
   );
 }

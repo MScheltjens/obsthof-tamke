@@ -1,16 +1,10 @@
-import './globals.css';
-import { Providers } from './providers';
-
-export default function RootLayout({
-  children
-}: Readonly<{
+type Props = {
   children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body className="antialiased">
-        <Providers>{children}</Providers>
-      </body>
-    </html>
-  );
+};
+
+// Since we have a `not-found.tsx` page on the root, a layout file
+// is required, even if it's just passing children through.
+
+export default function RootLayout({ children }: Props) {
+  return children;
 }

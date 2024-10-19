@@ -1,5 +1,6 @@
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { getServerSession } from 'next-auth';
+
 // the only user is admin with password admin, so actually no need to use next-auth. but it's a good example,
 // it might be necessary that the administrator wants to log in with google later
 
@@ -28,7 +29,12 @@ export const authOptions = {
         return null;
       }
     })
-  ]
+  ],
+  secret: process.env.SECRET,
+  url: process.env.NEXTAUTH_URL,
+  pages: {
+    // signIn: '/login'
+  }
 };
 
 // minimalize imports in other files
