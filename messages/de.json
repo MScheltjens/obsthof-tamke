@@ -1,6 +1,39 @@
 {
+  "AppMetaData": {
+    "title": "Obsthof Tamke",
+    "welcome": "Willkommen bei Obsthof Tamke. Wir sind ein Familienbetrieb in der Hamburger Umgebung. Wir bauen Äpfel, Birnen, Kirschen und Pflaumen an. Wir produzieren auch Apfelsaft und viele weitere leckere Produkte."
+  },
   "HomePage": {
     "title": "Startseite",
-    "welcome": "Willkommen auf der Startseite"
+    "description": "Willkommen bei Obsthof Tamke. Wir sind ein Familienbetrieb in der Hamburger Umgebung. Wir bauen Äpfel, Birnen, Kirschen und Pflaumen an. Wir produzieren auch Apfelsaft und viele weitere leckere Produkte."
+  },
+  "AboutPage": {
+    "title": "Über uns",
+    "description": "Erfahren Sie mehr über Obsthof Tamke. Wir sind ein Familienbetrieb in der Hamburger Umgebung. Wir bauen Äpfel, Birnen, Kirschen und Pflaumen an. Wir produzieren auch Apfelsaft und viele weitere leckere Produkte."
+  },
+  "ContactPage": {
+    "title": "Kontakt",
+    "description": "Kontaktieren Sie Obsthof Tamke. Wir sind ein Familienbetrieb in der Hamburger Umgebung. Wir bauen Äpfel, Birnen, Kirschen und Pflaumen an. Wir produzieren auch Apfelsaft und viele weitere leckere Produkte."
+  },
+  "ShopPage": {
+    "title": "Shop",
+    "description": "Kaufen Sie Produkte von Obsthof Tamke. Wir sind ein Familienbetrieb in der Hamburger Umgebung. Wir bauen Äpfel, Birnen, Kirschen und Pflaumen an. Wir produzieren auch Apfelsaft und viele weitere leckere Produkte."
+  },
+  "AdminPage": {
+    "title": "Admin",
+    "description": "Verwalten Sie die Inhalte und Einstellungen von Obsthof Tamke."
+  },
+  "LoginPage": {
+    "username": "Benutzername",
+    "password": "Passwort",
+    "submit": "Absenden"
+  },
+  "NotFoundPage": {
+    "title": "Nicht gefunden",
+    "description": "Die Seite konnte nicht gefunden werden."
+  },
+  "ErrorPage": {
+    "title": "Fehler",
+    "description": "Ein Fehler ist aufgetreten."
   }
 }

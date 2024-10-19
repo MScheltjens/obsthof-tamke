@@ -1,15 +1,20 @@
 import { getAuth } from '@auth/auth-config';
-import { AuthButton } from '@components/auth-button';
 import { redirect } from '@i18n/routing';
+import { setRequestLocale } from '@i18n/set-request-locale';
 
-export default async function Page() {
+export default async function Page({
+  params: { locale }
+}: {
+  params: { locale: string };
+}) {
+  setRequestLocale(locale);
   const session = await getAuth();
   const user = session?.user;
 
   return user ? (
-    <section className="flex h-screen flex-col items-center justify-center">
-      <h1 className="text-4xl font-bold">Admin Page</h1>
-      <AuthButton />
+    <section>
+      <h1>Admin Page</h1>
+      {/* TODO: make signout btn (also make sure admin is always logged out) */}
     </section>
   ) : (
     redirect('/login')

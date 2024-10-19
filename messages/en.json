@@ -1,6 +1,39 @@
 {
+  "AppMetaData": {
+    "title": "Obsthof Tamke",
+    "welcome": "Welcome to Obsthof Tamke. We are a family business in the Hamburg area. We grow apples, pears, cherries, and plums. We also produce apple juice and many other delicious products."
+  },
   "HomePage": {
-    "title": "Home Page",
-    "welcome": "Welcome to the home page"
+    "title": "Home",
+    "description": "Welcome to Obsthof Tamke. We are a family business in the Hamburg area. We grow apples, pears, cherries, and plums. We also produce apple juice and many other delicious products."
+  },
+  "AboutPage": {
+    "title": "About Us",
+    "description": "Learn more about Obsthof Tamke. We are a family business in the Hamburg area. We grow apples, pears, cherries, and plums. We also produce apple juice and many other delicious products."
+  },
+  "ContactPage": {
+    "title": "Contact",
+    "description": "Contact Obsthof Tamke. We are a family business in the Hamburg area. We grow apples, pears, cherries, and plums. We also produce apple juice and many other delicious products."
+  },
+  "ShopPage": {
+    "title": "Shop",
+    "description": "Buy products from Obsthof Tamke. We are a family business in the Hamburg area. We grow apples, pears, cherries, and plums. We also produce apple juice and many other delicious products."
+  },
+  "AdminPage": {
+    "title": "Admin",
+    "description": "Manage the content and settings of Obsthof Tamke."
+  },
+  "LoginPage": {
+    "username": "Username",
+    "password": "Password",
+    "submit": "Submit"
+  },
+  "NotFoundPage": {
+    "title": "Not Found",
+    "description": "The page could not be found."
+  },
+  "ErrorPage": {
+    "title": "Error",
+    "description": "An error has occurred."
   }
 }
