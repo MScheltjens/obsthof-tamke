@@ -9,12 +9,12 @@ export const generateStaticParams = () =>
   routing.locales.map((locale) => ({ locale }));
 
 //translate the metadata for the page
-// export const generateMetaData = async ({
+// const generateMetaData = async ({
 //   params: { locale }
 // }: {
 //   params: { locale: string };
 // }) => {
-//   const t = await getTranslations({ locale, namespace: ['Metadata'] });
+//   const t = await getTranslations({ locale, namespace: ['AppMetaData'] });
 //   return {
 //     title: t('title'),
 //     description: t('description')
