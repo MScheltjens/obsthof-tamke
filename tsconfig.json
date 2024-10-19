@@ -19,7 +19,7 @@
     ],
     "paths": {
       "@components/*": ["./components/*"],
-      "@auth/*": ["./api/auth/[...nextauth]/route"],
+      "@auth/*": ["./auth/*"],
       "@middlewares/*": ["./middlewares/*"],
       "@lib/*": ["./lib/*"]
     }
