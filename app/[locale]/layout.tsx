@@ -14,7 +14,7 @@ export const generateMetaData = async ({
 }: {
   params: { locale: string };
 }) => {
-  const t = await getTranslations({ locale, namespace: ['Metadata'] });
+  const t = await getTranslations({ locale, namespace: ['AppMetaData'] });
   return {
     title: t('title'),
     description: t('description')
