@@ -1,5 +1,5 @@
 import '../globals.css';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages } from 'next-intl/server';
 import { Providers } from '@components/providers';
 import { routing } from '@i18n/routing';
 import { setRequestLocale } from '@i18n/set-request-locale';
@@ -9,17 +9,17 @@ export const generateStaticParams = () =>
   routing.locales.map((locale) => ({ locale }));
 
 //translate the metadata for the page
-export const generateMetaData = async ({
-  params: { locale }
-}: {
-  params: { locale: string };
-}) => {
-  const t = await getTranslations({ locale, namespace: ['AppMetaData'] });
-  return {
-    title: t('title'),
-    description: t('description')
-  };
-};
+// const generateMetaData = async ({
+//   params: { locale }
+// }: {
+//   params: { locale: string };
+// }) => {
+//   const t = await getTranslations({ locale, namespace: ['AppMetaData'] });
+//   return {
+//     title: t('title'),
+//     description: t('description')
+//   };
+// };
 
 export default async function LocaleLayout({
   children,
