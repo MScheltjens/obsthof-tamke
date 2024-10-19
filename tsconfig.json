@@ -19,7 +19,7 @@
     ],
     "paths": {
       "@components/*": ["./components/*"],
-      "@auth/*": ["./auth/*"],
+      "@config/*": ["./config/*"],
       "@middlewares/*": ["./middlewares/*"],
       "@lib/*": ["./lib/*"]
     }
