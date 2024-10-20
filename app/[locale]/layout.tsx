@@ -20,6 +20,20 @@ export const generateStaticParams = () =>
 //     description: t('description')
 //   };
 // };
+import { getTranslations } from 'next-intl/server';
+
+export const generateMetadata = async ({
+  params: { locale }
+}: {
+  params: { locale: string };
+}) => {
+  const t = await getTranslations({ locale, namespace: 'Metadata' });
+
+  return {
+    title: t('title'),
+    description: t('description')
+  };
+};
 
 export default async function LocaleLayout({
   children,

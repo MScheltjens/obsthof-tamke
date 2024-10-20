@@ -19,6 +19,7 @@
     ],
     "paths": {
       "@components/*": ["./components/*"],
+      "@forms/*": ["./components/forms/*"],
       "@auth/*": ["./auth/*"],
       "@i18n/*": ["./i18n/*"],
       "@lib/*": ["./lib/*"],
