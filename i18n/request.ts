@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getRequestConfig } from 'next-intl/server';
 import { routing } from './routing';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 export default getRequestConfig(async ({ locale }) => {
   // Validate that the incoming `locale` parameter is valid
@@ -12,3 +13,7 @@ export default getRequestConfig(async ({ locale }) => {
     messages: (await import(`../messages/${locale}.json`)).default
   };
 });
+
+// set requested locale at build time
+export const setRequestLocale = (locale: string) =>
+  unstable_setRequestLocale(locale);

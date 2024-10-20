@@ -10,7 +10,6 @@ export default async function AdminPage({
   setRequestLocale(locale);
   const session = await getAuth();
   const user = session?.user;
-  console.log('user', user);
 
   return user ? (
     <section>
