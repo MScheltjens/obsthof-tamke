@@ -3,35 +3,21 @@ import { getMessages } from 'next-intl/server';
 import { Providers } from '@components/providers';
 import { routing } from '@i18n/routing';
 import { setRequestLocale } from '@i18n/set-request-locale';
+import { getTranslations } from 'next-intl/server';
 
 // generate all the static paths for the pages within this layout
 export const generateStaticParams = () =>
   routing.locales.map((locale) => ({ locale }));
 
-//translate the metadata for the page
-// const generateMetaData = async ({
-//   params: { locale }
-// }: {
-//   params: { locale: string };
-// }) => {
-//   const t = await getTranslations({ locale, namespace: ['AppMetaData'] });
-//   return {
-//     title: t('title'),
-//     description: t('description')
-//   };
-// };
-import { getTranslations } from 'next-intl/server';
-
+//
 export const generateMetadata = async ({
   params: { locale }
 }: {
   params: { locale: string };
 }) => {
-  const t = await getTranslations({ locale, namespace: 'Metadata' });
-
+  const t = await getTranslations({ locale, namespace: 'MetaData' });
   return {
-    title: t('title'),
-    description: t('description')
+    title: t('title')
   };
 };
 
