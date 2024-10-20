@@ -1,6 +1,6 @@
-import { getAuth } from '@auth/auth-config';
-import { redirect } from '@i18n/routing';
-import { setRequestLocale } from '@i18n/request';
+import { getAuth } from '@/auth/auth-config';
+import { redirect } from '@/i18n/routing';
+import { setRequestLocale } from '@/i18n/request';
 
 export default async function AdminPage({
   params: { locale }

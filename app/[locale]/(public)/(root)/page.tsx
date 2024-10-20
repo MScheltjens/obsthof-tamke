@@ -1,4 +1,4 @@
-import { setRequestLocale } from '@i18n/request';
+import { setRequestLocale } from '@/i18n/request';
 import { useTranslations } from 'next-intl';
 
 export default function HomePage({
