@@ -9,7 +9,7 @@ import { getTranslations } from 'next-intl/server';
 export const generateStaticParams = () =>
   routing.locales.map((locale) => ({ locale }));
 
-//
+// generate the metadata for the layout
 export const generateMetadata = async ({
   params: { locale }
 }: {
