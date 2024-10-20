@@ -1,6 +1,5 @@
 'use client';
 
-import { SessionProvider } from 'next-auth/react';
 import { AbstractIntlMessages, NextIntlClientProvider } from 'next-intl';
 
 export const Providers = ({
@@ -13,9 +12,8 @@ export const Providers = ({
     messages: AbstractIntlMessages;
   };
 }) => (
-  <SessionProvider>
-    <NextIntlClientProvider messages={messages} locale={locale}>
-      {children}
-    </NextIntlClientProvider>
-  </SessionProvider>
+  <NextIntlClientProvider messages={messages} locale={locale}>
+    {/* <SessionProvider>{children}</SessionProvider> */}
+    {children}
+  </NextIntlClientProvider>
 );

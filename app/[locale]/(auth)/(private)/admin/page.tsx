@@ -2,7 +2,7 @@ import { getAuth } from '@auth/auth-config';
 import { redirect } from '@i18n/routing';
 import { setRequestLocale } from '@i18n/set-request-locale';
 
-export default async function Page({
+export default async function AdminPage({
   params: { locale }
 }: {
   params: { locale: string };
@@ -10,6 +10,7 @@ export default async function Page({
   setRequestLocale(locale);
   const session = await getAuth();
   const user = session?.user;
+  console.log('user', user);
 
   return user ? (
     <section>

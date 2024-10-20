@@ -1,7 +1,7 @@
 import { setRequestLocale } from '@i18n/set-request-locale';
 import { useTranslations } from 'next-intl';
 
-export default function Page({
+export default function ContactPage({
   params: { locale }
 }: {
   params: { locale: string };
