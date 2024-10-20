@@ -1,9 +1,9 @@
 import '../globals.css';
 import { getMessages } from 'next-intl/server';
-import { Providers } from '@components/providers';
-import { routing } from '@i18n/routing';
-import { setRequestLocale } from '@i18n/set-request-locale';
+import { routing } from '@/i18n/routing';
+import { setRequestLocale } from '@/i18n/request';
 import { getTranslations } from 'next-intl/server';
+import { NextIntlClientProvider } from 'next-intl';
 
 // generate all the static paths for the pages within this layout
 export const generateStaticParams = () =>
@@ -36,7 +36,9 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body className="antialiased">
-        <Providers intl={{ locale, messages }}>{children}</Providers>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

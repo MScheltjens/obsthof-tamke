@@ -1,4 +1,4 @@
-import { AuthProvider } from '@components/auth-provider';
+import { AuthProvider } from '@/components/auth-provider';
 
 // for now we do not need to wrap the entire app with a session provider,
 // we only need this in the login and private pages.
