@@ -1,7 +1,7 @@
 import '../globals.css';
 import { getMessages } from 'next-intl/server';
 import { routing } from '@i18n/routing';
-import { setRequestLocale } from '@i18n/set-request-locale';
+import { setRequestLocale } from '@i18n/request';
 import { getTranslations } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 
