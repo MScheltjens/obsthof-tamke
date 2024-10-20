@@ -1,6 +1,6 @@
-import { setRequestLocale } from '@i18n/set-request-locale';
+import { setRequestLocale } from '@/i18n/request';
 
-export default async function LoginPage({
+export default function LoginPage({
   params: { locale }
 }: {
   params: { locale: string };

@@ -1,25 +1,26 @@
 import '../globals.css';
 import { getMessages } from 'next-intl/server';
-import { routing } from '@i18n/routing';
-import { setRequestLocale } from '@i18n/set-request-locale';
+import { routing } from '@/i18n/routing';
+import { setRequestLocale } from '@/i18n/request';
 import { getTranslations } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 
 // generate all the static paths for the pages within this layout
-export const generateStaticParams = () =>
+export function generateStaticParams() {
   routing.locales.map((locale) => ({ locale }));
+}
 
 // generate the metadata for the layout
-export const generateMetadata = async ({
+export async function generateMetadata({
   params: { locale }
 }: {
   params: { locale: string };
-}) => {
+}) {
   const t = await getTranslations({ locale, namespace: 'MetaData' });
   return {
     title: t('title')
   };
-};
+}
 
 export default async function LocaleLayout({
   children,
