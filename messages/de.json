@@ -22,7 +22,7 @@
     "title": "Admin",
     "description": "Verwalten Sie die Inhalte und Einstellungen von Obsthof Tamke."
   },
-  "AuthPage": {
+  "LoginPage": {
     "title": "Anmelden",
     "description": "Bitte melden Sie sich an, um auf den Admin-Bereich zuzugreifen."
   },

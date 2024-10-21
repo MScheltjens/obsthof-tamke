@@ -3,7 +3,7 @@ import { withAuth } from 'next-auth/middleware';
 import createMiddleware from 'next-intl/middleware';
 import { routing } from './i18n/routing';
 
-const publicPages = ['/', '/auth', '/shop', '/contact', '/about'];
+const publicPages = ['/', '/login', '/shop', '/contact', '/about'];
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -17,7 +17,7 @@ const authMiddleware = withAuth(
       authorized: ({ token }) => token != null
     },
     pages: {
-      signIn: '/auth'
+      signIn: '/login'
     }
   }
 );

@@ -22,7 +22,7 @@
     "title": "Admin",
     "description": "Manage the content and settings of Obsthof Tamke."
   },
-  "AuthPage": {
+  "LoginPage": {
     "title": "Login",
     "description": "Please sign in to access the admin area."
   },

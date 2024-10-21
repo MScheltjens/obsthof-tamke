@@ -1,9 +1,14 @@
 import { getAuth } from '@/auth/auth-config';
 import { SignOutButton } from '@/components/signout-btn';
-
+import { setRequestLocale } from '@/i18n/request';
 import { getTranslations } from 'next-intl/server';
 
-export default async function AdminPage() {
+export default async function AdminPage({
+  params: { locale }
+}: {
+  params: { locale: string };
+}) {
+  setRequestLocale(locale);
   const session = await getAuth();
   const t = await getTranslations('AdminPage');
   const user = session?.user;
