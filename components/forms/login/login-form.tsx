@@ -8,14 +8,13 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/routing';
 import { useState } from 'react';
 
 export const LoginForm = () => {
   const t = useTranslations('LoginForm');
   const router = useRouter();
-  const locale = useLocale();
   const [loginError, setLoginError] = useState<string | null>(null);
   const form = useForm<LoginFormInputs>({
     resolver: zodResolver(LoginFormSchema),
@@ -34,10 +33,7 @@ export const LoginForm = () => {
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     signIn('credentials', { callbackUrl: '/admin', ...data }).then((result) => {
-      if (result?.error) {
-        setLoginError(result.error);
-      } else {
-      }
+      if (result?.error) setLoginError(result.error);
       reset();
       router.push('/admin');
     });
@@ -51,7 +47,7 @@ export const LoginForm = () => {
           className="mx-auto mt-6 max-w-4xl lg:flex-auto"
         >
           <div className="grid grid-cols-1 gap-6">
-            {/* Name */}
+            {/* username */}
             <div className="col-span-2 md:col-span-1">
               <Label htmlFor="username">{t('username')}</Label>
               <Input
@@ -67,7 +63,7 @@ export const LoginForm = () => {
               )}
             </div>
 
-            {/* Email */}
+            {/* password */}
             <div className="col-span-2 md:col-span-1">
               <Label htmlFor="password">{t('password')}</Label>
               <Input

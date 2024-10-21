@@ -1,5 +1,3 @@
-'use client';
-
 import { LoginForm } from '@/components/forms/login/login-form';
 import { useTranslations } from 'next-intl';
 
