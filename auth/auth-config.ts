@@ -1,40 +1,26 @@
+import { AuthOptions, getServerSession } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { getServerSession } from 'next-auth';
 
-// the only user is admin with password admin, so actually no need to use next-auth. but it's a good example,
-// it might be necessary that the administrator wants to log in with google later
-
-export const authOptions = {
+export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
-      id: 'credentials',
       name: 'Credentials',
       credentials: {
-        username: {
-          label: 'Username',
-          type: 'text',
-          placeholder: 'your username'
-        },
-        password: { label: 'Password', type: 'password' }
+        username: { type: 'text' },
+        password: { type: 'password' }
       },
-      async authorize(credentials) {
-        // no need to make a call to a db, there is currently only one user
+      authorize(credentials) {
         if (
-          credentials?.username === process.env.USERNAME &&
-          credentials?.password === process.env.PASSWORD
+          credentials?.username === 'admin' &&
+          credentials.password === 'admin'
         ) {
-          const user = { id: '1', name: 'admin' };
-          return user;
+          return { id: '1', name: 'admin' };
         }
+
         return null;
       }
     })
-  ],
-  secret: process.env.SECRET,
-  url: process.env.NEXTAUTH_URL,
-  pages: {
-    signIn: '/login'
-  }
+  ]
 };
 
 // minimalize imports in other files

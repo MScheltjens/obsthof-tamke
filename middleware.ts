@@ -4,7 +4,7 @@ import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';
 
 // only the admin page is not public accessible
-const publicPages = ['/', '/login', '/contact', '/about', '/shop'];
+const publicPages = ['/', '/contact', '/about', '/shop', '/login'];
 
 const intlMiddleware = createMiddleware(routing);
 

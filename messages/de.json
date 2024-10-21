@@ -34,5 +34,8 @@
   "ErrorPage": {
     "title": "Fehler",
     "description": "Ein Fehler ist aufgetreten."
+  },
+  "LocaleSwitcher": {
+    "switchLocale": "Zu {locale, select, de {Deutsch} en {Englisch} other {Unbekannt}} wechseln"
   }
 }

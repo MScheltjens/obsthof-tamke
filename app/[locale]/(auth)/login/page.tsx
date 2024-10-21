@@ -1,15 +1,12 @@
-import { setRequestLocale } from '@/i18n/request';
+import { getAuth } from '@/auth/auth-config';
+import { LoginForm } from '@/components/forms/login/login-form';
+import { redirect } from '@/i18n/routing';
 
-export default async function LoginPage({
-  params: { locale }
-}: {
-  params: { locale: string };
-}) {
-  setRequestLocale(locale);
-
-  return (
-    <section>
-      <h1>Login</h1>
-    </section>
-  );
+export default async function LoginPage() {
+  const session = await getAuth();
+  const user = session?.user;
+  if (user) {
+    redirect('/admin');
+  }
+  return <LoginForm />;
 }
