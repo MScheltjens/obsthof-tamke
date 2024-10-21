@@ -22,10 +22,9 @@
     "title": "Admin",
     "description": "Manage the content and settings of Obsthof Tamke."
   },
-  "LoginPage": {
-    "username": "Username",
-    "password": "Password",
-    "submit": "Submit"
+  "AuthPage": {
+    "title": "Login",
+    "description": "Please sign in to access the admin area."
   },
   "NotFoundPage": {
     "title": "Not Found",
@@ -37,5 +36,15 @@
   },
   "LocaleSwitcher": {
     "switchLocale": "Switch to {locale, select, de {German} en {English} other {Unknown}}"
+  },
+  "SignOutButton": {
+    "signOut": "Sign Out"
+  },
+  "LoginForm": {
+    "username": "Username",
+    "password": "Password",
+    "submit": "Sign In",
+    "submitting": "Signing In...",
+    "error": "{error, select, CredentialsSignin {Invalid username or password} other {Unknown error}}"
   }
 }

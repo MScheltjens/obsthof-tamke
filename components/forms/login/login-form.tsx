@@ -1,62 +1,100 @@
 'use client';
 
-// TODO: setup form with react-hook-form
-
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { LoginFormInputs, LoginFormSchema } from './login-form-schema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
 import { signIn } from 'next-auth/react';
-import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import { useState, FormEvent } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { useState } from 'react';
 
 export const LoginForm = () => {
-  const locale = useLocale();
-  const t = useTranslations('LoginPage');
-  const [error, setError] = useState<string>();
+  const t = useTranslations('LoginForm');
   const router = useRouter();
+  const locale = useLocale();
+  const [loginError, setLoginError] = useState<string | null>(null);
+  const form = useForm<LoginFormInputs>({
+    resolver: zodResolver(LoginFormSchema),
+    defaultValues: {
+      username: '',
+      password: ''
+    }
+  });
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (error) setError(undefined);
+  const {
+    reset,
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting }
+  } = form;
 
-    const formData = new FormData(event.currentTarget);
-    signIn('credentials', {
-      username: formData.get('username'),
-      password: formData.get('password'),
-      redirect: false
-    }).then((result) => {
+  const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
+    signIn('credentials', { callbackUrl: '/admin', ...data }).then((result) => {
       if (result?.error) {
-        setError(result.error);
+        setLoginError(result.error);
       } else {
-        router.push('/' + locale + '/admin');
       }
+      reset();
+      router.push('/admin');
     });
-  }
+  };
 
   return (
-    <form
-      action="/api/auth/callback/credentials"
-      method="post"
-      onSubmit={onSubmit}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 10,
-        width: 300
-      }}
-    >
-      <label style={{ display: 'flex' }}>
-        <span style={{ display: 'inline-block', flexGrow: 1, minWidth: 100 }}>
-          {t('username')}
-        </span>
-        <input name="username" type="text" />
-      </label>
-      <label style={{ display: 'flex' }}>
-        <span style={{ display: 'inline-block', flexGrow: 1, minWidth: 100 }}>
-          {t('password')}
-        </span>
-        <input name="password" type="password" />
-      </label>
-      {error && <p>{t('error', { error })}</p>}
-      <button type="submit">{t('submit')}</button>
-    </form>
+    <Card className="mx-auto mt-6 max-w-4xl">
+      <CardContent>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="mx-auto mt-6 max-w-4xl lg:flex-auto"
+        >
+          <div className="grid grid-cols-1 gap-6">
+            {/* Name */}
+            <div className="col-span-2 md:col-span-1">
+              <Label htmlFor="username">{t('username')}</Label>
+              <Input
+                id="username"
+                type="text"
+                placeholder={t('username')}
+                {...register('username')}
+              />
+              {errors.username?.message && (
+                <p className="ml-1 mt-2 text-sm text-rose-400">
+                  {errors.username.message}
+                </p>
+              )}
+            </div>
+
+            {/* Email */}
+            <div className="col-span-2 md:col-span-1">
+              <Label htmlFor="password">{t('password')}</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder={t('password')}
+                {...register('password')}
+              />
+              {errors.password?.message && (
+                <p className="ml-1 mt-2 text-sm text-rose-400">
+                  {errors.password.message}
+                </p>
+              )}
+            </div>
+
+            <Button
+              type="submit"
+              variant="default"
+              disabled={isSubmitting}
+              className="mt-4 w-full hover:bg-primary/50 disabled:opacity-50"
+            >
+              {isSubmitting ? t('submitting') : t('submit')}
+            </Button>
+          </div>
+        </form>
+        {loginError && <p>{loginError}</p>}
+      </CardContent>
+    </Card>
   );
 };

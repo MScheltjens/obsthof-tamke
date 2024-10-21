@@ -7,6 +7,8 @@ export const routing = defineRouting({
   localePrefix: 'always',
 
   // The `pathnames` object maps the English pathnames to the German pathnames.
+  // we can not really specify a pathname for the login since we need to also define it in the middleware,
+  // and we can not opt in on a language there so this throws an error...
   pathnames: {
     '/': '/',
     '/admin': '/admin',
@@ -21,10 +23,6 @@ export const routing = defineRouting({
     '/shop': {
       de: '/geschaeft',
       en: '/shop'
-    },
-    '/login': {
-      de: '/anmelden',
-      en: '/login'
     }
   }
 });

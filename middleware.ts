@@ -1,10 +1,9 @@
 import { NextRequest } from 'next/server';
 import { withAuth } from 'next-auth/middleware';
 import createMiddleware from 'next-intl/middleware';
-import { routing } from '@/i18n/routing';
+import { routing } from './i18n/routing';
 
-// only the admin page is not public accessible
-const publicPages = ['/', '/contact', '/about', '/shop', '/login'];
+const publicPages = ['/', '/auth', '/shop', '/contact', '/about'];
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -18,7 +17,7 @@ const authMiddleware = withAuth(
       authorized: ({ token }) => token != null
     },
     pages: {
-      signIn: '/login'
+      signIn: '/auth'
     }
   }
 );
@@ -35,7 +34,6 @@ export default function middleware(req: NextRequest) {
   if (isPublicPage) {
     return intlMiddleware(req);
   } else {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return (authMiddleware as any)(req);
   }
 }

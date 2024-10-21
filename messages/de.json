@@ -22,10 +22,9 @@
     "title": "Admin",
     "description": "Verwalten Sie die Inhalte und Einstellungen von Obsthof Tamke."
   },
-  "LoginPage": {
-    "username": "Benutzername",
-    "password": "Passwort",
-    "submit": "Absenden"
+  "AuthPage": {
+    "title": "Anmelden",
+    "description": "Bitte melden Sie sich an, um auf den Admin-Bereich zuzugreifen."
   },
   "NotFoundPage": {
     "title": "Nicht gefunden",
@@ -37,5 +36,15 @@
   },
   "LocaleSwitcher": {
     "switchLocale": "Zu {locale, select, de {Deutsch} en {Englisch} other {Unbekannt}} wechseln"
+  },
+  "SignOutButton": {
+    "signOut": "Abmelden"
+  },
+  "LoginForm": {
+    "username": "Benutzername",
+    "password": "Passwort",
+    "submit": "Anmelden",
+    "submitting": "Anmelden...",
+    "error": "{error, select, CredentialsSignin {Ungültiger Benutzername oder Passwort} other {Unbekannter Fehler}}"
   }
 }
