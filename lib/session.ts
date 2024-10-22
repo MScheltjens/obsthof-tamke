@@ -23,7 +23,7 @@ export async function decrypt(session: string | undefined = '') {
     });
     return payload;
   } catch (error) {
-    console.log('Failed to verify session');
+    console.log('Failed to verify session', error);
   }
 }
 
@@ -34,7 +34,7 @@ export async function createSession(user: { username: string }) {
   (await cookies()).set('session', session, {
     httpOnly: true,
     secure: true,
-    expires: expires,
+    expires,
     sameSite: 'lax',
     path: '/'
   });
@@ -62,7 +62,7 @@ export async function updateSession() {
   cookieStore.set('session', session, {
     httpOnly: true,
     secure: true,
-    expires: expires,
+    expires,
     sameSite: 'lax',
     path: '/'
   });
