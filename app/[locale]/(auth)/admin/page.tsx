@@ -10,6 +10,8 @@ export default async function AdminPage({
   const t = await getTranslations('AdminPage');
   setRequestLocale(locale);
 
+  // TODO: we need to check for a admin user here or redirect to a login page or popup a login modal
+
   return (
     <div>
       <h1>{t('title')}</h1>
