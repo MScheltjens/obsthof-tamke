@@ -2,6 +2,8 @@ import { getSession } from '@/lib/session';
 import { LoginForm } from '@/components/forms/login/login-form';
 import { setRequestLocale } from '@/i18n/request';
 import { getTranslations } from 'next-intl/server';
+import { Button } from '@/components/ui/button';
+import { signOut } from '@/actions/auth';
 
 export default async function AdminPage({
   params

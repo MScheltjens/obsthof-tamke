@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { useTranslations } from 'next-intl';
-import { signIn } from '@/actions/auth';
+import { signIn, signOut } from '@/actions/auth';
 import { useState } from 'react';
 
 export const LoginForm = () => {
@@ -91,6 +91,8 @@ export const LoginForm = () => {
           >
             {isSubmitting ? t('submitting') : t('submit')}
           </Button>
+          <p className="mt-4">sign out</p>
+          <Button onClick={() => signOut()}>Click me</Button>
         </form>
       </CardContent>
     </Card>

@@ -1,10 +1,14 @@
+import { routing } from '@/i18n/routing';
 import createMiddleware from 'next-intl/middleware';
-import { routing } from './i18n/routing';
-import { updateSession } from './lib/session';
+import { updateSession } from '@/lib/session'; // hypothetical session utility
+import { NextRequest, NextResponse } from 'next/server';
 
-export default async function middleware() {
-  createMiddleware(routing);
-  return await updateSession();
+const middleware = createMiddleware(routing);
+
+export default async function (req: NextRequest) {
+  await updateSession();
+  // Call the original middleware function
+  return middleware(req);
 }
 
 export const config = {

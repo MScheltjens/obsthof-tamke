@@ -50,5 +50,5 @@ export const signIn = async ({
 
 export async function signOut() {
   deleteSession();
-  redirect('/login');
+  redirect('/');
 }
