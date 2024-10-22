@@ -1,44 +1,52 @@
 'use server';
 
-import { LoginFormSchema } from '@/components/forms/login/login-form-schema';
+import {
+  LoginFormSchema,
+  TLoginFormSchema
+} from '@/components/forms/login/login-form-schema';
 import { z } from 'zod';
 
-export type ServerAuthResponse = Promise<{
-  success: boolean;
-  data: { user: { id: number; username: string } } | null;
-  errors: { message: string }[] | null;
-}>;
+export type TServerAuthResponse = {
+  errors?: {
+    username?: string[];
+    password?: string[];
+  };
+  message?: string;
+} | null;
 
-export const transformZodErrors = (error: z.ZodError) => {
+export const transformZodErrors = async (error: z.ZodError) => {
   return error.issues.map((issue) => ({
     path: issue.path.join('.'),
     message: issue.message
   }));
 };
 
-export async function login({
+export async function authenticate({
   username,
   password
-}: LoginFormSchema): ServerAuthResponse {
+}: TLoginFormSchema): Promise<TServerAuthResponse> {
   //validate the FormData
-  const validatedFields = LoginFormSchema.parse({ username, password });
-  console.log('Validated Fields:', validatedFields);
+  const validatedFields = LoginFormSchema.safeParse({ username, password });
 
-  if (username === process.env.USERNAME && password === process.env.PASSWORD) {
+  // If any form fields are invalid, return early
+  if (!validatedFields.success) {
     return {
-      success: true,
-      data: {
-        user: {
-          id: 1,
-          username: 'admin'
-        }
-      },
-      errors: null
+      errors: validatedFields.error.flatten().fieldErrors
     };
   }
+
+  // Check if the username and password are correct (hardcoded for now)
+  // setup a session or token for the user
+  if (username !== process.env.USERNAME || password !== process.env.PASSWORD) {
+    return {
+      errors: {
+        username: ['Invalid username'],
+        password: ['Invalid password']
+      }
+    };
+  }
+  // If the form fields are valid, return a success message
   return {
-    success: false,
-    data: null,
-    errors: [{ message: 'Invalid username or password' }]
+    message: 'Login successful!'
   };
 }

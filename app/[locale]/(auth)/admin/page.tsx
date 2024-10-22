@@ -1,3 +1,4 @@
+import { LoginForm } from '@/components/forms/login/login-form';
 import { setRequestLocale } from '@/i18n/request';
 import { getTranslations } from 'next-intl/server';
 
@@ -13,9 +14,12 @@ export default async function AdminPage({
   // TODO: we need to check for a admin user here or redirect to a login page or popup a login modal
 
   return (
-    <div>
-      <h1>{t('title')}</h1>
-      <p>{t('description')}</p>
+    <div className="flex h-screen justify-center bg-slate-200">
+      <div>
+        <h1>{t('title')}</h1>
+        <p>{t('description')}</p>
+        <LoginForm />
+      </div>
     </div>
   );
 }

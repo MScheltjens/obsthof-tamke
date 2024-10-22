@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -22,34 +18,16 @@
       }
     ],
     "paths": {
-      "@/components/*": [
-        "./components/*"
-      ],
-      "@/forms/*": [
-        "./components/forms/*"
-      ],
-      "@/auth/*": [
-        "./auth/*"
-      ],
-      "@/i18n/*": [
-        "./i18n/*"
-      ],
-      "@/lib/*": [
-        "./lib/*"
-      ],
-      "@/messages/*": [
-        "./messages/*"
-      ]
+      "@/components/*": ["./components/*"],
+      "@/forms/*": ["./components/forms/*"],
+      "@/auth/*": ["./auth/*"],
+      "@/i18n/*": ["./i18n/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/messages/*": ["./messages/*"],
+      "@/actions/*": ["./actions/*"]
     },
     "target": "ES2017"
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
