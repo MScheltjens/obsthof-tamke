@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { useTranslations } from 'next-intl';
-import { authenticate } from '@/actions/auth';
+import { signIn } from '@/actions/auth';
 import { useState } from 'react';
 
 export const LoginForm = () => {
@@ -30,7 +30,7 @@ export const LoginForm = () => {
   } = form;
 
   const onSubmit: SubmitHandler<TLoginFormSchema> = async (data) => {
-    const response = await authenticate(data);
+    const response = await signIn(data);
     if (response && response.errors) {
       setLoginError('Invalid username or password');
       reset();

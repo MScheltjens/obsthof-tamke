@@ -5,6 +5,8 @@ import {
   TLoginFormSchema
 } from '@/components/forms/login/login-form-schema';
 import { z } from 'zod';
+import { createSession, deleteSession } from '@/lib/session';
+import { redirect } from '@/i18n/routing';
 
 export type TServerAuthResponse = {
   errors?: {
@@ -21,10 +23,10 @@ export const transformZodErrors = async (error: z.ZodError) => {
   }));
 };
 
-export async function authenticate({
+export const signIn = async ({
   username,
   password
-}: TLoginFormSchema): Promise<TServerAuthResponse> {
+}: TLoginFormSchema): Promise<TServerAuthResponse> => {
   //validate the FormData
   const validatedFields = LoginFormSchema.safeParse({ username, password });
 
@@ -35,18 +37,18 @@ export async function authenticate({
     };
   }
 
-  // Check if the username and password are correct (hardcoded for now)
-  // setup a session or token for the user
-  if (username !== process.env.USERNAME || password !== process.env.PASSWORD) {
-    return {
-      errors: {
-        username: ['Invalid username'],
-        password: ['Invalid password']
-      }
-    };
-  }
+  const user = { username: validatedFields.data.username };
+
+  // create the session
+  await createSession(user);
+
   // If the form fields are valid, return a success message
   return {
     message: 'Login successful!'
   };
+};
+
+export async function signOut() {
+  deleteSession();
+  redirect('/login');
 }
