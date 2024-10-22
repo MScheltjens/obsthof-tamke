@@ -1,11 +1,18 @@
+import { use } from "react";
 import { setRequestLocale } from '@/i18n/request';
 import { useTranslations } from 'next-intl';
 
-export default function AboutPage({
-  params: { locale }
-}: {
-  params: { locale: string };
-}) {
+export default function AboutPage(
+  props: {
+    params: Promise<{ locale: string }>;
+  }
+) {
+  const params = use(props.params);
+
+  const {
+    locale
+  } = params;
+
   setRequestLocale(locale);
   const t = useTranslations('AboutPage');
 

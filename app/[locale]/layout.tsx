@@ -10,26 +10,41 @@ export const generateStaticParams = () =>
   routing.locales.map((locale) => ({ locale }));
 
 // generate the metadata for the layout
-export const generateMetadata = async ({
-  params: { locale }
-}: {
-  params: { locale: string };
-}) => {
+export const generateMetadata = async (
+  props: {
+    params: Promise<{ locale: string }>;
+  }
+) => {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   const t = await getTranslations({ locale, namespace: 'MetaData' });
   return {
     title: t('title')
   };
 };
 
-export default async function LocaleLayout({
-  children,
-  params: { locale }
-}: Readonly<{
-  children: React.ReactNode;
-  params: {
-    locale: string;
-  };
-}>) {
+export default async function LocaleLayout(
+  props: Readonly<{
+    children: React.ReactNode;
+    params: {
+      locale: string;
+    };
+  }>
+) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
+  const {
+    children
+  } = props;
+
   setRequestLocale(locale);
   const messages = await getMessages();
 

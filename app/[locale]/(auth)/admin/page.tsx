@@ -3,11 +3,17 @@ import { SignOutButton } from '@/components/signout-btn';
 import { setRequestLocale } from '@/i18n/request';
 import { getTranslations } from 'next-intl/server';
 
-export default async function AdminPage({
-  params: { locale }
-}: {
-  params: { locale: string };
-}) {
+export default async function AdminPage(
+  props: {
+    params: Promise<{ locale: string }>;
+  }
+) {
+  const params = await props.params;
+
+  const {
+    locale
+  } = params;
+
   setRequestLocale(locale);
   const session = await getAuth();
   const t = await getTranslations('AdminPage');
