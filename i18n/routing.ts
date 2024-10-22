@@ -4,7 +4,7 @@ import { defineRouting } from 'next-intl/routing';
 export const routing = defineRouting({
   locales: ['de', 'en'],
   defaultLocale: 'de',
-  localePrefix: 'as-needed',
+  localePrefix: 'always',
 
   // The `pathnames` object maps the English pathnames to the German pathnames.
   // we can not really specify a pathname for the login since we need to also define it in the middleware,
@@ -12,7 +12,6 @@ export const routing = defineRouting({
 
   pathnames: {
     '/': '/',
-    '/login': '/login',
     '/admin': '/admin',
     '/about': {
       de: '/ueber-uns',

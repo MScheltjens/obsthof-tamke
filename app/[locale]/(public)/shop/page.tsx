@@ -1,20 +1,14 @@
-import { use } from "react";
 import { setRequestLocale } from '@/i18n/request';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
-export default function ShopPage(
-  props: {
-    params: Promise<{ locale: string }>;
-  }
-) {
-  const params = use(props.params);
-
-  const {
-    locale
-  } = params;
-
+export default async function ShopPage({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   setRequestLocale(locale);
-  const t = useTranslations('ContactPage');
+  const t = await getTranslations('ContactPage');
 
   return (
     <div>

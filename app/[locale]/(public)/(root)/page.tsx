@@ -1,20 +1,15 @@
-import { use } from "react";
 import { setRequestLocale } from '@/i18n/request';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
-export default function HomePage(
-  props: {
-    params: Promise<{ locale: string }>;
-  }
-) {
-  const params = use(props.params);
-
-  const {
-    locale
-  } = params;
+export default async function HomePage({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
 
   setRequestLocale(locale);
-  const t = useTranslations('HomePage');
+  const t = await getTranslations('HomePage');
 
   return (
     <div>

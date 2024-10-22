@@ -22,10 +22,6 @@
     "title": "Admin",
     "description": "Manage the content and settings of Obsthof Tamke."
   },
-  "LoginPage": {
-    "title": "Login",
-    "description": "Please sign in to access the admin area."
-  },
   "NotFoundPage": {
     "title": "Not Found",
     "description": "The page could not be found."

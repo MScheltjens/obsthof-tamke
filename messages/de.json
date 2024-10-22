@@ -22,10 +22,6 @@
     "title": "Admin",
     "description": "Verwalten Sie die Inhalte und Einstellungen von Obsthof Tamke."
   },
-  "LoginPage": {
-    "title": "Anmelden",
-    "description": "Bitte melden Sie sich an, um auf den Admin-Bereich zuzugreifen."
-  },
   "NotFoundPage": {
     "title": "Nicht gefunden",
     "description": "Die Seite konnte nicht gefunden werden."

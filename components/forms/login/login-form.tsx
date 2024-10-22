@@ -7,15 +7,11 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
-import { useRouter } from '@/i18n/routing';
-import { useState } from 'react';
 
 export const LoginForm = () => {
   const t = useTranslations('LoginForm');
-  const router = useRouter();
-  const [loginError, setLoginError] = useState<string | null>(null);
+  // const [loginError, setLoginError] = useState<string | null>(null);
   const form = useForm<LoginFormInputs>({
     resolver: zodResolver(LoginFormSchema),
     defaultValues: {
@@ -25,18 +21,14 @@ export const LoginForm = () => {
   });
 
   const {
-    reset,
     register,
     handleSubmit,
     formState: { errors, isSubmitting }
   } = form;
 
-  const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
-    signIn('credentials', { callbackUrl: '/admin', ...data }).then((result) => {
-      if (result?.error) setLoginError(result.error);
-      reset();
-      router.push('/admin');
-    });
+  const onSubmit: SubmitHandler<LoginFormInputs> = (data) => {
+    console.log(data);
+    // TODO: Handle login (nextjs authorization)
   };
 
   return (
@@ -89,7 +81,7 @@ export const LoginForm = () => {
             </Button>
           </div>
         </form>
-        {loginError && <p>{loginError}</p>}
+        {/* {loginError && <p>{loginError}</p>} */}
       </CardContent>
     </Card>
   );
