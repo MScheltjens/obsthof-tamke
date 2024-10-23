@@ -24,7 +24,8 @@
       "@/i18n/*": ["./i18n/*"],
       "@/lib/*": ["./lib/*"],
       "@/messages/*": ["./messages/*"],
-      "@/actions/*": ["./actions/*"]
+      "@/actions/*": ["./actions/*"],
+      "@/hooks/*": ["./hooks/*"]
     },
     "target": "ES2017"
   },

@@ -37,6 +37,8 @@
     "signOut": "Sign Out"
   },
   "LoginForm": {
+    "title": "Sign In",
+    "description": "Sign in to access the admin area.",
     "username": "Username",
     "password": "Password",
     "submit": "Sign In",

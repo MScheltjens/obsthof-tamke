@@ -37,6 +37,8 @@
     "signOut": "Abmelden"
   },
   "LoginForm": {
+    "title": "Anmelden",
+    "description": "Melden Sie sich an, um auf den Admin-Bereich zuzugreifen.",
     "username": "Benutzername",
     "password": "Passwort",
     "submit": "Anmelden",
