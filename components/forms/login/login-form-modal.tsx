@@ -10,7 +10,6 @@ import { useTranslations } from 'next-intl';
 import { signIn } from '@/actions/auth';
 import { useState } from 'react';
 import { Modal } from '@/components/modal';
-import { JWTPayload } from 'jose';
 
 export const LoginFormModal = () => {
   const t = useTranslations('LoginForm');

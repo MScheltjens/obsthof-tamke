@@ -6,10 +6,9 @@ export default async function AuthLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const session = await getSession();
   return (
-    <div>
-      <h1>Admin Layout</h1>
+    <>
       {children}
       <ModalProvider session={session} />
-    </div>
+    </>
   );
 }
