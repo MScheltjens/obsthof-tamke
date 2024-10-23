@@ -12,11 +12,7 @@ import { useState } from 'react';
 import { Modal } from '@/components/modal';
 import { JWTPayload } from 'jose';
 
-export const LoginFormModal = ({
-  session
-}: {
-  session: JWTPayload | null | undefined;
-}) => {
+export const LoginFormModal = () => {
   const t = useTranslations('LoginForm');
   const [loginError, setLoginError] = useState<string | null>(null);
   const form = useForm<TLoginFormSchema>({
@@ -45,11 +41,7 @@ export const LoginFormModal = ({
   };
 
   return (
-    <Modal
-      isOpen={session === null}
-      title={t('title')}
-      description={t('description')}
-    >
+    <Modal isOpen={true} title={t('title')} description={t('description')}>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-6">
         {/* username */}
         <div>

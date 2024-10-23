@@ -24,7 +24,7 @@ export default async function AdminPage({
           <SignoutButton />
         </div>
       ) : (
-        <LoginFormModal session={session} />
+        <LoginFormModal />
       )}
     </div>
   );

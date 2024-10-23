@@ -5,6 +5,7 @@ import { setRequestLocale } from '@/i18n/request';
 import { getTranslations } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import { ModalProvider } from '@/components/providers/modal-provider';
+import { getSession } from '@/lib/session';
 
 // generate all the static paths for the pages within this layout
 export const generateStaticParams = () =>
@@ -35,13 +36,14 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
   const messages = await getMessages();
+  const session = await getSession();
 
   return (
     <html lang={locale}>
       <body className="antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
-          <ModalProvider />
+          <ModalProvider session={session} />
         </NextIntlClientProvider>
       </body>
     </html>
